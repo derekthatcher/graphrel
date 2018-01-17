@@ -136,14 +136,14 @@ function restart() {
     // update existing links based on their states (dynamically set classes for CSS animation: http://jaketrent.com/post/d3-class-operations/)
     path.classed('selected', function (d) { return d === selected_link; })
       .style('marker-start', function (d) { return d.left ? 'url(#start-arrow)' : ''; })
-      .style('marker-start', function (d) { return d.right ? 'url(#end-arrow)' : ''; });
+      .style('marker-start', function (d) { return d.right ? 'url(#start-arrow)' : ''; });
 
     // add new links
     path.enter().append('svg:path')
       .attr('class', 'link')
       .classed('selected', function (d) { return d === selected_link; })
       .style('marker-start', function (d) { return d.left ? 'url(#start-arrow)' : ''; })
-      .style('marker-start', function (d) { return d.right ? 'url(#end-arrow)' : ''; })
+      .style('marker-start', function (d) { return d.right ? 'url(#start-arrow)' : ''; })
       .on('mousedown', function (d) {
           if (d3.event.ctrlKey) return;
 
@@ -197,7 +197,7 @@ function restart() {
 
           // reposition drag line
           drag_line
-            .style('marker-start', 'url(#end-arrow)')
+            .style('marker-start', 'url(#start-arrow)')
             .classed('hidden', false)
             .attr('d', 'M' + mousedown_node.x + ',' + mousedown_node.y + 'L' + mousedown_node.x + ',' + mousedown_node.y);
 
